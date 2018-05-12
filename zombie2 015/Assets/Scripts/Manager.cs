@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
 
 	void Start () 
 	{
+		// variable entera inicializada en cero que es el switch de los casos de las primitivas
 		int caractr = 0;
 		// vector que contiene los colores del zombie
 		_zonbi.col = new Color[] 
@@ -20,7 +21,7 @@ public class Manager : MonoBehaviour
 		for (int i = 0; i < rnd; i++)  // for que inicia en cero y me aumenta de a uno hasta la cantidad al azar que se hizo en el 
 		{
 			GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);    // al gameobject lo llame go y le agrege la primitiva de cubo
-			go.AddComponent<Rigidbody> (); // agregandole el rigidbody a las primitivas
+			go.AddComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // agregandole el rigidbody a las primitivas y congelando su rotagion en x y z
 			Vector3 pos = new Vector3 (Random.Range(-10, 10), 0, Random.Range(-10, 10)); // un vector3 posicion que llame pos que coloca al azar las primitivas en la escena   
 			go.transform.position = pos;  //al gameobject go le estoy dando la posicion de pos 
 			// este switch crea la primitivas heroe ciudadano y zombie 

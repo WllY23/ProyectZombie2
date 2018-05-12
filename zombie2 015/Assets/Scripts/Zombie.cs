@@ -10,7 +10,6 @@ public class Zombie : MonoBehaviour
 
 	Estado estado; // enum estado
 
-	//int idle = 0; //idle es el estado quieto del zombie 
 	int moving; //idle es el estado en movimiento del zombie 
 
 	// esta es una coorutina que cada 5 segundos me realizar un random en el estado y la direccion del zombie
@@ -42,20 +41,20 @@ public class Zombie : MonoBehaviour
 	//metodo que contiene un switch con los movimientos del zombie 
 	public void Moving()
 	{
-		_zonbi.Speed = 0.1f; // defini la velocidad del zombie a 0.1float
+		_zonbi.Speed = 1.7f; // defini la velocidad del zombie a 1.7float
 		switch (rnd)
 		{
 		case 0:
-			transform.position += transform.forward * _zonbi.Speed; //avanzar hacia adelante 
+			transform.position += transform.forward * _zonbi.Speed * Time.deltaTime; //avanzar hacia adelante 
 			break;
 		case 1:
-			transform.position -= transform.forward * _zonbi.Speed;	//avanzar hacia atras
+			transform.position -= transform.forward * _zonbi.Speed * Time.deltaTime;	//avanzar hacia atras
 			break;
 		case 2:
-			transform.position += transform.right * _zonbi.Speed; // avanzar hacia la izquierda
+			transform.position += transform.right * _zonbi.Speed * Time.deltaTime; // avanzar hacia la izquierda
 			break;
 		case 3:
-			transform.position -= transform.right * _zonbi.Speed; // avanzar hacia la derecha
+			transform.position -= transform.right * _zonbi.Speed * Time.deltaTime; // avanzar hacia la derecha
 			break;
 		}
 	}
